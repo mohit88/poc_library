@@ -1,3 +1,7 @@
 class User < ActiveRecord::Base
-  belongs_to :role
+  alias_attribute :role, :type
+  module Role
+    INTERN = "Intern"
+    ADMIN = "Admin"
+  end
 end
