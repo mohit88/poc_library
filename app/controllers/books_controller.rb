@@ -49,14 +49,9 @@ class BooksController < ApplicationController
     end
   end
 
-  # DELETE /books/1
-  # DELETE /books/1.json
-  def destroy
-    @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_url }
-      format.json { head :no_content }
-    end
+  def borrow
+    flash[:success] = 'Book borrowed...!'
+    redirect_to :book, {id: params[:id]}
   end
 
   private

@@ -1,7 +1,11 @@
 Poc::Application.routes.draw do
   resources :login
 
-  resources :books
+  resources :books do
+  member do
+    get :borrow
+  end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -44,7 +48,7 @@ Poc::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
