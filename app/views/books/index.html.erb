@@ -33,5 +33,5 @@
 
 <br>
 
-<%= link_to 'New Book', new_user_book_path(@current_user) %>
+<%= link_to 'New Book', new_user_book_path(@current_user) if @current_user.role == User::Role::ADMIN %>
 <%= link_to 'My Books', user_book_user_books_path(@current_user) %>
