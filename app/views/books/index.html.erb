@@ -1,23 +1,22 @@
+<div class="login_form">
+
 <%= form_for(user_books_path, method: :get) do |f| %>
     <%= text_field_tag :search, params[:search] %>
-
-    <div class="actions">
-      <%= submit_tag "Search", :name => nil %>
-    </div>
+    <%= submit_tag "Search", :name => nil %>
 <% end %>
-<h1>Listing books</h1>
+  <h1>List of books</h1>
 
-<table>
-  <thead>
-  <tr>
-    <th>Isbn</th>
-    <th>Title</th>
-    <th>Author</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
+  <table>
+    <thead>
+    <tr>
+      <th>Isbn</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
 
   <tbody>
   <% @books.each do |book| %>
@@ -31,7 +30,8 @@
   </tbody>
 </table>
 
-<br>
+  <br>
 
 <%= link_to 'New Book', new_user_book_path(@current_user) if @current_user.role == User::Role::ADMIN %>
 <%= link_to 'My Books', user_book_user_books_path(@current_user) %>
+</div>

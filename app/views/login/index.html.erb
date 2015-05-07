@@ -1,8 +1,7 @@
-<h1>login</h1>
-<p></p>
 
-
-<%= form_tag(authentication_login_index_path, method: :get) do |f| %>
+<div class="login_form">
+  <h1 class="">login</h1>
+  <%= form_tag(authentication_login_index_path, method: :get) do |f| %>
     <div class="field">
       <%= label_tag :email %><br>
       <%= text_field_tag :email_id %>
@@ -10,4 +9,5 @@
     <div class="actions">
       <%= submit_tag "Login"%>
     </div>
-<% end %>
+  <% end %>
+</div>

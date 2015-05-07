@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150506112849) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
+    t.string   "type",       default: "intern"
   end
 
 end
