@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_user, only: [:index, :show, :edit, :update, :destroy, :return, :user_book]
 
   # GET /books
   # GET /books.json
@@ -51,13 +52,26 @@ class BooksController < ApplicationController
 
   def borrow
     flash[:success] = 'Book borrowed...!'
-    redirect_to :book, {id: params[:id]}
+    redirect_to :user_book, {user_id: @current_user,id: params[:id]}
+  end
+
+  def return
+    flash[:success] = 'Thanks for returning book .....'
+    redirect_to :user_book_user_books, {user_id: @current_user}
+  end
+
+  def user_book
+    @books = [Book.first]
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
+    end
+
+    def set_current_user
+      @current_user = User.find(params[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

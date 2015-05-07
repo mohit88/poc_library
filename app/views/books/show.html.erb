@@ -20,5 +20,5 @@
   <%= @book.author %>
 </p>
 
-<%= link_to 'borrow', borrow_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<%= link_to 'borrow', borrow_user_book_path(@current_user,@book) %> |
+<%= link_to 'Back', user_books_path(@current_user) %>
