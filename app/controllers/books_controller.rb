@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_user, only: [:index, :show, :edit, :update, :destroy, :return, :user_book]
+  before_action :set_book, only: [:show, :edit, :destroy]
+  before_action :set_current_user, only: [:index, :show, :create, :edit, :update, :destroy, :return, :user_book]
 
   # GET /books
   # GET /books.json
@@ -16,38 +16,29 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
-  # GET /books/1/edit
-  def edit
-  end
-
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(book_params)
-
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @book }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:success] = 'Added new Book...!'
+    redirect_to :new_user_book, {user_id: @current_user}
+    # @book = Book.new(book_params)
+    #
+    # respond_to do |format|
+    #   if @book.save
+    #     format.html { redirect_to @book, notice: 'Book was successfully created.' }
+    #     format.json { render action: 'show', status: :created, location: @book }
+    #   else
+    #     format.html { render action: 'new' }
+    #     format.json { render json: @book.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
-    respond_to do |format|
-      if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:success] = 'Added new Book...!'
+    redirect_to :new_user_book, {user_id: @current_user}
   end
 
   def borrow
