@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    @books = params[:search] ? Book.select{|book| book.title.downcase.include?(params[:search].downcase)} : Book.all
   end
 
   def show

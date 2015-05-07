@@ -1,19 +1,26 @@
+<%= form_for(books_path, method: :get) do |f| %>
+    <%= text_field_tag :search, params[:search] %>
+
+    <div class="actions">
+      <%= submit_tag "Search", :name => nil %>
+    </div>
+<% end %>
 <h1>Listing books</h1>
 
 <table>
   <thead>
-    <tr>
-      <th>Isbn</th>
-      <th>Title</th>
-      <th>Author</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th>Isbn</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @books.each do |book| %>
+  <% @books.each do |book| %>
       <tr>
         <td><%= book.isbn %></td>
         <td><%= book.title %></td>
@@ -21,7 +28,7 @@
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

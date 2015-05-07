@@ -2,9 +2,12 @@ Poc::Application.routes.draw do
   resources :login
 
   resources :books do
-  member do
-    get :borrow
-  end
+    member do
+      get :borrow
+    end
+    collection do
+      get :search
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
